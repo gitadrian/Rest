@@ -12,16 +12,18 @@
 <body data-ng-controller="ctrl">	
 	<a href="json">JSON</a><br>
 	<a href="xml">XML</a><br>
-	<a href="csv">CSV</a><br><br>
+	<a href="file.csv">CSV</a><br><br>
 	
-	<div data-ng-repeat="person in persons">
+	Search: <input type="text" ng-model="test"><br><br>
+	
+	
+	<div data-ng-repeat="person in persons | filter: test">
 		Name: {{person.name}}<br>
 		Last Name: {{person.lastName}}<br>
 		Age: {{person.age}}<br><br>
 	</div>
 	
-	<input type="text" ng-model="test"><br>
-	{{test}}
+	
 </body>
 </html>
 

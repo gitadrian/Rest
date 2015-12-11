@@ -1,11 +1,11 @@
 package com.stk.model;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-
-@XmlRootElement(name="Person")
+@XmlRootElement(name="person")
 public class Person {
 	
 	private String name;
@@ -73,11 +73,22 @@ public class Person {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Person [name=" + name + ", lastName=" + lastName + ", age="
-				+ age + "]";
-	}
+
+	
+
+	
+
+	
+	
+	
+
+	
+
+	
+	
+	
+	
+	
 	
 	
 	
