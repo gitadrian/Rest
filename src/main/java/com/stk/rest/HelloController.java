@@ -5,9 +5,12 @@ import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.stk.model.Person;
 
@@ -15,35 +18,17 @@ import com.stk.model.Person;
 @Controller
 public class HelloController {
 	
+	List<Person> persons = new ArrayList<Person>();
+	
 	@RequestMapping(value="/")
-	public String home(){
+	public String home(Model model){
+		model.addAttribute("person", new Person());
 		return "index";
 	}
 	
 	@RequestMapping(value="/json", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<Person> getJSON(){
-		
-		List<Person> persons = new ArrayList<Person>();
-		
-		Person person = new Person();
-		person.setName("Adrian");
-		person.setLastName("Castro");
-		person.setAge(23);
-		
-		Person person2 = new Person();
-		person2.setName("Juan");
-		person2.setLastName("Perez");
-		person2.setAge(21);
-		
-		Person person3 = new Person();
-		person3.setName("Pedro");
-		person3.setLastName("Lopez");
-		person3.setAge(25);
-		
-		persons.add(person);
-		persons.add(person2);
-		persons.add(person3);
-		
+	
 		return persons;
 		
 	}
@@ -81,6 +66,13 @@ public class HelloController {
 		sb.append(",");
 		sb.append(person.getAge());
 		return sb.toString();
+	}
+	
+	@RequestMapping(value="/personAdd", method=RequestMethod.POST)
+	public String personAdd(@ModelAttribute Person person, Model model){
+		System.out.println(person);
+		persons.add(person);
+		return "index";
 	}
 
 }
