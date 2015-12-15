@@ -3,9 +3,13 @@ package com.stk.rest;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +23,8 @@ import com.stk.model.Person;
 public class HelloController {
 	
 	List<Person> persons = new ArrayList<Person>();
+	
+	
 	
 	@RequestMapping(value="/")
 	public String home(Model model){
@@ -69,9 +75,13 @@ public class HelloController {
 	}
 	
 	@RequestMapping(value="/personAdd", method=RequestMethod.POST)
-	public String personAdd(@ModelAttribute Person person, Model model){
+	public String personAdd(Model model, @Valid @ModelAttribute Person person, BindingResult result){
 		System.out.println(person);
-		persons.add(person);
+		if (result.hasErrors()) {
+			System.out.println(result.getFieldError());
+		}else{
+			persons.add(person);
+		}
 		return "index";
 	}
 

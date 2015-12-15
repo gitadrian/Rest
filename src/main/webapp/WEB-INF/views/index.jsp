@@ -9,31 +9,32 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="resources/js/bootstrap.min.js">
+<link rel="stylesheet" href="resources/css/style.css">
 
 <script type="text/javascript" src="resources/js/jquery-1-11-3.min.js"></script>
 <script type="text/javascript" src="resources/js/angular.js"></script>
 <script type="text/javascript" src="resources/js/app.js"></script>
+
 <title>Insert title here</title>
 </head>
 <body data-ng-controller="ctrl">
 
 	<div class="row">
 		<div class="col-md-4">
-			<a href="json">JSON</a> <br> 
-			<a href="xml">XML</a> <br> 
-			<a href="file.csv">CSV</a> <br> <br>
+			
 		</div>
 		
-		<div class="col-md-4" >
-			<form:form commandName="person" method="POST" action="personAdd">
-				Name <form:input path="name" class="form-control"  required="required" />
-				<br>
-				Last Name <form:input path="lastName" class="form-control"  required="required"/>
-				<br>
-				Age <form:input path="age" class="form-control"  required="required"/>
-				<br>
-				<input type="submit" class="btn btn-primary"/>
-			</form:form>
+		<div class="col-md-4" > 
+			
+				<form:form commandName="person" method="POST" action="personAdd">
+					Name <form:input path="name" class="form-control" cssErrorClass="error" />
+					<br>
+					Last Name <form:input path="lastName" class="form-control" cssErrorClass="error" />
+					<br>
+					Age <form:input path="age" type="number" class="form-control" cssErrorClass="error" />
+					<br>
+					<input type="submit" class="btn btn-primary"/>
+				</form:form>
 			
 			<br>
 			<br>
@@ -55,7 +56,10 @@
 					<td>{{person.lastName}}</td>
 					<td>{{person.age}}</td>
 				</tr>
-			</table>
+			</table><br><br>
+			<a href="json">JSON</a> <br> 
+			<a href="xml">XML</a> <br> 
+			<a href="file.csv">CSV</a> <br> <br>
 			
 				
 			</div>
@@ -66,20 +70,6 @@
 		
 		</div>
 	</div>
-
-
-
-
-
-
-	
-
-	
-
-
-	
-
-
 </body>
 </html>
 

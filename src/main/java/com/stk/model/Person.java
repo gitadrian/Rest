@@ -1,42 +1,59 @@
 package com.stk.model;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
-@XmlRootElement(name="person")
+@XmlRootElement(name = "person")
 public class Person {
-	
+
+	@NotNull
+	@NotEmpty
+	@Pattern(regexp="[a-zA-Z]+")
 	private String name;
+
+	@NotNull
+	@NotEmpty
+	@Pattern(regexp="[a-zA-Z]+")
 	private String lastName;
+
+	@NotNull
+	@Range(min=1,max=100)
 	private Integer age;
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	@XmlElement
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
-	
+
 	@XmlElement
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public Integer getAge() {
 		return age;
 	}
-	
+
 	@XmlElement
 	public void setAge(Integer age) {
 		this.age = age;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -47,6 +64,7 @@ public class Person {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -79,29 +97,5 @@ public class Person {
 		return "Person [name=" + name + ", lastName=" + lastName + ", age="
 				+ age + "]";
 	}
-	
-	
-
-	
-
-	
-
-	
-	
-	
-
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
