@@ -31,7 +31,9 @@
 					<br>
 					Last Name <form:input path="lastName" class="form-control" cssErrorClass="error" />
 					<br>
-					Age <form:input path="age" type="number" class="form-control" cssErrorClass="error" />
+					
+					Age <form:input path="age" class="form-control" cssErrorClass="error" />
+					
 					<br>
 					<input type="submit" class="btn btn-primary"/>
 				</form:form>

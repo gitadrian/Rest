@@ -1,4 +1,4 @@
-package com.stk.rest;
+package com.stk.controller;
 
 import java.util.ArrayList;
 import java.util.List;
